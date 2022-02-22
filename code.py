@@ -2,7 +2,7 @@ import base64
 
 def isBase64(s):
     try:
-        return base64.b64encode(base64.b64decode(s)).decode('ascii')
+        return base64.b64encode(base64.b64decode(s)).decode('utf-8')
     except Exception:
         return False
 
@@ -13,15 +13,15 @@ with open('secret_message.txt') as file:
     #if the text comes back as Base64 then it will decode it.
     if isb64:
         print("true")
-        base = text.encode('ascii')
-        decoded_base = base64.b64decode(base)
-        decoded_base = decoded_base.decode('ascii')
+        base = text.encode('utf-8')
+        decoded_base = base64.decodebytes(base)
+        decoded_base = decoded_base.decode('utf-8')
         print(decoded_base)
     #if the text in the documnet comes back to anything but Base64 it will encode it and print the encoded text.  
     else:
         print("false")
-        base = text.encode('ascii')
-        encoded_base = base64.b64encode(base)
-        encoded_base = encoded_base.decode('ascii')
+        base = text.encode('utf-8')
+        encoded_base = base64.encodebytes(base)
+        encoded_base = encoded_base.decode('utf-8')
         print(encoded_base)
         
